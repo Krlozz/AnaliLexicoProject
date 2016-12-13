@@ -1,3 +1,8 @@
+/*			Escuela Politécnica Nacional
+Fecha de entrega: 2016/12/13
+Integrantes: Ayala Carlos
+             Ramos Wilson
+             Veintimilla Dennis*/
 %{
 #include <math.h>
 #include <stdio.h>
@@ -28,16 +33,18 @@ letra		[a-zA-Z]
 "while"		{printf("PALABRA CLAVE\n");}
 
 "true"|"false"                                  {printf("BOOLEAN\n");}
+"/*"[^}\n]*             {printf("ERROR LEXICO EN LA LINEA: %d DE %s\n",num_linea, yytext);}
 {digito}*"."{digito}*([eE][+-]?{digito}+)? 	{printf("DECIMAL\n");}
 [-]?{digito}+					{printf("ENTERO\n");}
 [0-9][_a-zA-Z0-9]*?			        {printf("ERROR LEXICO EN LA LINEA: %d DE %s\n",num_linea, yytext);}
 [a-zA-Z][_a-zA-Z0-9]*?			        {printf("IDENTIFICADOR\n");}
 "\""[^}\n]*"\""					{printf("STRING\n");}
-'[^}\n]*' 	                                {printf("CHAR\n");}
+'[^}\n]' 	                                {printf("CHAR\n");}
 
-","|";"|":"|"("|")"|"["|"]"|"{"|"}"		{printf("SIGNO DE PUNTUACION\n");}
+","|":"|"("|")"|"["|"]"|"{"		        {printf("SIGNO DE PUNTUACION\n");}
 "+"|"-"|"*"|"/"|"<"|">"|"="|"!"|"&"|"$" 	{printf("OPERADOR\n");}
 "<="|">="|"=="|"!="|"&&"|"||"	                {printf("OPERADOR COMPUESTO\n");}
+";"|"}"                                         {printf("FIN DE LINEA\n");}
 
 "/*"[^}\n]*"*/"|"//"[^}\n]*		        {printf("\n");}
 [\n]						{++num_linea; printf("%d ",num_linea);}
