@@ -30,9 +30,10 @@ letra		[a-zA-Z]
 "true"|"false"                                  {printf("BOOLEAN\n");}
 {digito}*"."{digito}*([eE][+-]?{digito}+)? 	{printf("DECIMAL\n");}
 [-]?{digito}+					{printf("ENTERO\n");}
-{letra}*({letra}*{digito}*)*?			{printf("IDENTIFICADOR\n");}
-"\""([a-z|A-Z|0-9|" "][a-z|A-Z|0-9|" "]*)"\""	{printf("STRING\n");}
-'([a-z|A-Z|0-9|" "][a-z|A-Z|0-9|" "]*)' 	{printf("CHAR\n");}
+[0-9][_a-zA-Z0-9]*?			        {printf("ERROR LEXICO EN LA LINEA: %d DE %s\n",num_linea, yytext);}
+[a-zA-Z][_a-zA-Z0-9]*?			        {printf("IDENTIFICADOR\n");}
+"\""[^}\n]*"\""					{printf("STRING\n");}
+'[^}\n]*' 	                                {printf("CHAR\n");}
 
 ","|";"|":"|"("|")"|"["|"]"|"{"|"}"		{printf("SIGNO DE PUNTUACION\n");}
 "+"|"-"|"*"|"/"|"<"|">"|"="|"!"|"&"|"$" 	{printf("OPERADOR\n");}
