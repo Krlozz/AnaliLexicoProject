@@ -796,7 +796,7 @@ YY_RULE_SETUP
 case 20:
 YY_RULE_SETUP
 #line 35 "ProyecIBim.l"
-{printf("    CHAR\n");}
+{printf("CHAR\n");}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP

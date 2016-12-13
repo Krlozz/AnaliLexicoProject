@@ -32,7 +32,7 @@ letra		[a-zA-Z]
 [-]?{digito}+					{printf("ENTERO\n");}
 {letra}*({letra}*{digito}*)*?			{printf("IDENTIFICADOR\n");}
 "\""([a-z|A-Z|0-9|" "][a-z|A-Z|0-9|" "]*)"\""	{printf("STRING\n");}
-'([a-z|A-Z|0-9|" "][a-z|A-Z|0-9|" "]*)' 	{printf("    CHAR\n");}
+'([a-z|A-Z|0-9|" "][a-z|A-Z|0-9|" "]*)' 	{printf("CHAR\n");}
 
 ","|";"|":"|"("|")"|"["|"]"|"{"|"}"		{printf("SIGNO DE PUNTUACION\n");}
 "+"|"-"|"*"|"/"|"<"|">"|"="|"!"|"&"|"$" 	{printf("OPERADOR\n");}
